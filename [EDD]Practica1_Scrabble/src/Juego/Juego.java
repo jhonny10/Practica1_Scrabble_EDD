@@ -54,7 +54,7 @@ public class Juego extends javax.swing.JFrame {
     
     public void inicializarFichas(){ //pendiente
         
-        for(int i = 0; i < fichas.getSize(); i++){
+        for(int i = 0; i < listado.length; i++){
             fichas.encolar(new Ficha(listado[i], punteo[i]));
         }
         
@@ -63,106 +63,252 @@ public class Juego extends javax.swing.JFrame {
         boolean ingresado = false;
         
         while(!ingresado){
+            int num = 0 ;//aleatorio.nextInt(fichas.getSize());
+            try{
+                num = aleatorio.nextInt(fichas.getSize());
+            }catch(Exception ex){
+                //JOptionPane.showMessageDialog(null, "Error num: " + fichas.getSize());
+            }
+            Ficha comparacion = (Ficha) fichas.get(num);
             
-            Ficha comparacion = (Ficha) fichas.get(aleatorio.nextInt(fichas.getSize()));
+            String letra = comparacion.getFicha();
+            int punteletra = comparacion.getPunteo();
             
-            int num = aleatorio.nextInt(listado.length);
-            String letra = listado[num];
-            int punteletra = punteo[num];
-            
-            if(a > 12 && e > 12 && o > 9 && i > 6 && s > 6 && n > 5 && l > 4 && r > 5 && u > 5
-                    && t > 4 && d > 5 && g > 2 && c > 4 && b > 2 && m > 2 && pe > 2 && h > 2 && f > 1
-                    && v > 1 && y > 1 && q > 1 && j > 1 && ñ > 1 && x > 1 && z > 1){
+            if(a >= 12 && e >= 12 && o >= 9 && i >= 6 && s >= 6 && n >= 5 && l >= 4 && r >= 5 && u >= 5
+                    && t >= 4 && d >= 5 && g >= 2 && c >= 4 && b >= 2 && m >= 2 && pe >= 2 && h >= 2 && f >= 1
+                    && v >= 1 && y >= 1 && q >= 1 && j >= 1 && ñ >= 1 && x >= 1 && z >= 1){
                 ingresado = true;
             }
             
             switch(letra){
                 case "A":
-                    ficha_seleccion(a, 12, letra, punteletra);
+                    if(a < 12){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        a++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "B":
-                    ficha_seleccion(b, 2, letra, punteletra);
+                    if(b < 2){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        b++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "C":
-                    ficha_seleccion(c, 4, letra, punteletra);
+                    if(c < 4){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        c++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "D":
-                    ficha_seleccion(d, 5, letra, punteletra);
+                    if(d < 5){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        d++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "E":
-                    ficha_seleccion(e, 12, letra, punteletra);
+                    if(e < 12){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        e++;
+                    }else{
+                       Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "F":
-                    ficha_seleccion(f, 1, letra, punteletra);
+                    if(f < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        f++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "G":
-                    ficha_seleccion(g, 2, letra, punteletra);
+                    if(g < 2){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        g++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "H":
-                    ficha_seleccion(h, 2, letra, punteletra);
+                    if(h < 2){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        h++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "I":
-                    ficha_seleccion(i, 6, letra, punteletra);
+                    if(i < 6){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        i++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "J":
-                    ficha_seleccion(j, 1, letra, punteletra);
+                    if(j < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        j++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "L":
-                    ficha_seleccion(l, 4, letra, punteletra);
+                    if(l < 4){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        l++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "M":
-                    ficha_seleccion(m, 2, letra, punteletra);
+                    if(m < 2){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        m++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
+                    break;
                 case "N":
-                    ficha_seleccion(n, 5, letra, punteletra);
+                    if(n < 5){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        n++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "Ñ":
-                    ficha_seleccion(ñ, 1, letra, punteletra);
+                    if(ñ < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        ñ++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "O":
-                    ficha_seleccion(o, 9, letra, punteletra);
+                    if(o < 9){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        o++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "P":
-                    ficha_seleccion(pe, 2, letra, punteletra);
+                    if(pe < 2){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        pe++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "Q":
-                    ficha_seleccion(q, 1, letra, punteletra);
+                    if(q < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        q++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "R":
-                    ficha_seleccion(r, 5, letra, punteletra);
+                    if(r < 5){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        r++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;    
                 case "S":
-                    ficha_seleccion(s, 6, letra, punteletra);
+                    if(s < 6){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        s++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "T":
-                    ficha_seleccion(t, 4, letra, punteletra);
+                    if(t < 4){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        t++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "U":
-                    ficha_seleccion(u, 5, letra, punteletra);
+                    if(u < 5){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        u++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "V":
-                    ficha_seleccion(v, 1, letra, punteletra);
+                    if(v < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        v++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "X":
-                    ficha_seleccion(x, 1, letra, punteletra);
+                    if(x < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        x++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "Y":
-                    ficha_seleccion(y, 1, letra, punteletra);
+                    if(y < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        y++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
                 case "Z":
-                    ficha_seleccion(z, 1, letra, punteletra);
+                    if(z < 1){
+                        ficha_aleatorio.encolar(new Ficha(letra, punteletra));
+                        z++;
+                    }else{
+                        Object obj = fichas.get(letra, punteletra);
+                        boolean fa = fichas.remover(obj);
+                    }
                     break;
             }
         }
         JOptionPane.showMessageDialog(null, "Hecho");
-    }
-    
-    public void ficha_seleccion(int contador, int max, String letra, int punteoLetra){
-        if(contador <= max){
-            ficha_aleatorio.encolar(new Ficha(letra, punteoLetra));
-            contador++;
-        }else{
-            
-        }
     }
 
     /**

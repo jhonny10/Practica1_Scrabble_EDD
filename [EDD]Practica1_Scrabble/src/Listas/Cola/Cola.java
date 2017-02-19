@@ -5,6 +5,7 @@
  */
 package Listas.Cola;
 
+import Juego.Ficha;
 import Nodo_Listas.Nodo;
 
 /**
@@ -22,6 +23,32 @@ public class Cola {
         size = 0;
     }
     // null <-- raiz --> nodo5 --> null         cont 0...index =1
+    
+    public boolean remover(Object ob){
+        Nodo temp = first;  //el que en verdad se elimina
+                
+        while(temp != null){
+            
+            if(temp.getDato().equals(ob)){
+                Nodo sig = temp.getSiguiente();
+                Nodo ant = temp.getAnterior();
+                
+                if(sig != null){
+                    sig.setAnterior(ant);
+                }
+                if(ant != null){
+                    ant.setSiguiente(sig);
+                }
+                if(sig == null && ant == null){
+                    first = last = null;
+                }
+                size--;
+                return true;
+            }
+            temp = temp.getSiguiente();
+        }
+        return false;
+    }
     public Object remover(int index){
         int cont = 0;
         Nodo temp = first;
@@ -82,6 +109,39 @@ public class Cola {
         }
         
         return temp.getDato();
+    }
+    
+    public Object get(String letra, int punteo){
+        Nodo temp = first;
+        
+        while(temp != null){
+            Ficha f = (Ficha) temp.getDato();
+            
+            if(f.getFicha().equals(letra) && f.getPunteo() == punteo){
+                return temp.getDato();
+            }
+            
+            temp = temp.getSiguiente();
+        }
+        
+        return null;
+    }
+    
+    public int index(String letra, int punteo){
+        Nodo temp = first;
+        int cont = -1;
+        
+        while(temp != null){
+            Ficha f = (Ficha) temp.getDato();
+            
+            if(f.getFicha().equals(letra) && f.getPunteo() == punteo){
+                break;
+            }
+            temp = temp.getSiguiente();
+            cont++;
+        }
+        
+        return cont;
     }
     
     public void clear(){
